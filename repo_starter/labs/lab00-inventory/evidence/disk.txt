@@ -1,0 +1,9 @@
+﻿
+
+FriendlyName : WD PC SN740 SDDPNQD-512G-1127
+MediaType    : SSD
+BusType      : NVMe
+Size         : 512110190592
+
+
+
