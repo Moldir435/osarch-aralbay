@@ -35,9 +35,16 @@ lsblk
 
 1. Hardware Teardown Analysis
 Component 1: Motherboard & Platform (Huawei MCLF-XX Mainboard)
+<<<<<<< HEAD
  Image:![Motherboard](evidence/photos/motherboard.jpg)
  
  Socket: BGA1744 (Ball Grid Array; the processor is permanently surface-mounted via solder balls, not socketed).
+=======
+ 
+Image:![Motherboard](evidence/photos/motherboard.jpg)
+ 
+Socket: BGA1744 (Ball Grid Array; the processor is permanently surface-mounted via solder balls, not socketed).
+>>>>>>> 662ef70 (Fix comparison table formatting)
  Chipset: Intel Alder Lake-P Platform Controller Hub (integrated on package).
  Accepted CPU Generations: Factory-integrated 12th Gen Intel Core mobile processors only (Alder Lake-H/P architecture).
  Connects To: High-current multi-pin DC battery connector, eDP display ribbon cable, M.2 2280 NVMe storage slot, Type-C daughterboard, dual stereo speakers, and cooling assembly.
@@ -45,19 +52,34 @@ Component 1: Motherboard & Platform (Huawei MCLF-XX Mainboard)
  Zero modular expansion slots for CPU or RAM; no desktop socket or SO-DIMM slots are provided.
  The proprietary shape and screw mounting holes restrict the board strictly to this specific chassis model.
 Component 2: CPU & Cooling System (Intel Core i5-12450H + Shark Fin Cooler)
+<<<<<<< HEAD
  Image:![Cooling and CPU](evidence/photos/cooling.jpg)
  
  Connects To: The processor die is soldered directly to the BGA pads beneath the heatsink. The dual copper heatpipe assembly attaches with spring-tensioned screws directly above the CPU thermal plate; dual blower fans connect via 4-pin PWM headers.
+=======
+ 
+Image:![Cooling and CPU](evidence/photos/cooling.jpg)
+ 
+Connects To: The processor die is soldered directly to the BGA pads beneath the heatsink. The dual copper heatpipe assembly attaches with spring-tensioned screws directly above the CPU thermal plate; dual blower fans connect via 4-pin PWM headers.
+>>>>>>> 662ef70 (Fix comparison table formatting)
  Key Limitations:
  Base TDP is 45W with Maximum Turbo Power up to 95W; dynamic thermal throttling reduces sustained package power to ~40–45W under continuous heavy multi-threaded workloads.
  The CPU multiplier is factory-locked, preventing core clock overclocking.
 Component 3: Storage (PCle-8 SSD 512GB)
+<<<<<<< HEAD
  Image:![SSD](evidence/photos/ssd.jpg)
  Connects To: Motherboard M.2 2280 Key-M slot via PCIe lanes.
+=======
+ 
+Image:![SSD](evidence/photos/ssd.jpg)
+ 
+Connects To: Motherboard M.2 2280 Key-M slot via PCIe lanes.
+>>>>>>> 662ef70 (Fix comparison table formatting)
  Key Limitations:
  Maximum data transfer rate is constrained by the theoretical PCIe Gen4 x4 bus bandwidth (~8 GB/s).
  Thermal throttling under sustained sequential write operations inside a compact unvented laptop enclosure.
 Component 4: Battery Pack (Li-ion Polymer Battery)
+
 Image:![Battery](evidence/photos/battery.jpg)
 
 Connects To: Dedicated high-current DC battery harness connector on the lower edge of the motherboard.
@@ -65,14 +87,16 @@ Key Limitations:
 Nominal energy capacity is ~60 Wh (11.46V).
 Battery discharge current limits prevent the CPU from sustaining its peak 95W turbo frequencies when disconnected from the external USB-PD charger.
 
-2. Multi-OS Command Comparison Table (Windows, Linux, macOS)
-Hardware Fact Windows (PowerShell / CIM) Linux (Bash) macOS (Zsh / CLI)
-CPU Model & Clock Get-CimInstance Win32_Processor | Select-Object Name, MaxClockSpeed lscpu | grep "Model name" sysctl -n machdep.cpu.brand_string
-Cores & Threads Get-CimInstance Win32_Processor | Select-Object NumberOfCores, NumberOfLogicalProcessors lscpu | grep -E "^CPU\(s\):|Thread\(s\) per core:" sysctl -n hw.physicalcpu hw.logicalcpu
-RAM Total & Available Get-CimInstance Win32_OperatingSystem | Select-Object TotalVisibleMemorySize, FreePhysicalMemory free -h sysctl -n hw.memsize / vm_stat
-RAM Physical Modules Get-CimInstance Win32_PhysicalMemory | Select-Object Capacity, Speed, Manufacturer sudo dmidecode -t memory system_profiler SPMemoryDataType
-Disk Partitions & Topology Get-Disk lsblk diskutil list
-Physical Disk Details Get-PhysicalDisk | Select-Object FriendlyName, MediaType, Size sudo fdisk -l system_profiler SPStorageDataType
+### 2. Multi-OS Command Comparison Table (Windows, Linux, macOS)
+
+| Hardware Fact | Windows (PowerShell / CIM) | Linux (Bash) | macOS (Zsh / CLI) |
+| :--- | :--- | :--- | :--- |
+| **CPU Model & Clock** | `Get-CimInstance Win32_Processor \| Select-Object Name, MaxClockSpeed` | `lscpu \| grep "Model name"` | `sysctl -n machdep.cpu.brand_string` |
+| **Cores & Threads** | `Get-CimInstance Win32_Processor \| Select-Object NumberOfCores, NumberOfLogicalProcessors` | `lscpu \| grep -E "^CPU\(s\):\|Thread\(s\) per core:"` | `sysctl -n hw.physicalcpu hw.logicalcpu` |
+| **RAM Total & Available** | `Get-CimInstance Win32_OperatingSystem \| Select-Object TotalVisibleMemorySize, FreePhysicalMemory` | `free -h` | `sysctl -n hw.memsize` / `vm_stat` |
+| **RAM Physical Modules** | `Get-CimInstance Win32_PhysicalMemory \| Select-Object Capacity, Speed, Manufacturer` | `sudo dmidecode -t memory` | `system_profiler SPMemoryDataType` |
+| **Disk Partitions & Topology** | `Get-Disk` | `lsblk` | `diskutil list` |
+| **Physical Disk Details** | `Get-PhysicalDisk \| Select-Object FriendlyName, MediaType, Size` | `sudo fdisk -l` | `system_profiler SPStorageDataType` |
 
 
 ## What did not work for the first time
