@@ -1,0 +1,34 @@
+﻿=== CPU ===
+
+
+Name                      : 12th Gen Intel(R) Core(TM) i5-12450H
+NumberOfCores             : 8
+NumberOfLogicalProcessors : 12
+MaxClockSpeed             : 2000
+
+
+
+
+=== RAM ===
+
+Manufacturer   Capacity Speed DeviceLocator       
+------------   -------- ----- -------------       
+NULL         2147483648  4267 Controller0-ChannelA
+NULL         2147483648  4267 Controller0-ChannelB
+NULL         2147483648  4267 Controller0-ChannelC
+NULL         2147483648  4267 Controller0-ChannelD
+NULL         2147483648  4267 Controller1-ChannelA
+NULL         2147483648  4267 Controller1-ChannelB
+NULL         2147483648  4267 Controller1-ChannelC
+NULL         2147483648  4267 Controller1-ChannelD
+
+
+
+=== DISK ===
+
+Number FriendlyName                          Size PartitionStyle
+------ ------------                          ---- --------------
+     0 WD PC SN740 SDDPNQD-512G-1127 512110190592 GPT           
+
+
+
