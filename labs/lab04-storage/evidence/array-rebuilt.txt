@@ -1,0 +1,31 @@
+Personalities : [raid1] 
+md0 : active raid1 sdd1[2] sdb1[0]
+      2093056 blocks super 1.2 [2/2] [UU]
+      
+unused devices: <none>
+/dev/md0:
+           Version : 1.2
+     Creation Time : Sun Nov  8 14:20:59 2026
+        Raid Level : raid1
+        Array Size : 2093056 (2044.00 MiB 2143.29 MB)
+     Used Dev Size : 2093056 (2044.00 MiB 2143.29 MB)
+      Raid Devices : 2
+     Total Devices : 2
+       Persistence : Superblock is persistent
+
+       Update Time : Sun Nov  8 14:40:28 2026
+             State : clean 
+    Active Devices : 2
+   Working Devices : 2
+    Failed Devices : 0
+     Spare Devices : 0
+
+Consistency Policy : resync
+
+              Name : lab01:0  (local to host lab01)
+              UUID : 09787bcb:923baece:4c0acf1b:38fef758
+            Events : 39
+
+    Number   Major   Minor   RaidDevice State
+       0       8       17        0      active sync   /dev/sdb1
+       2       8       49        1      active sync   /dev/sdd1
