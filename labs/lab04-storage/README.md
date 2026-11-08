@@ -8,7 +8,10 @@ Date:08.11.2026
 
 Three extra 2 GB virtual disks were attached to the guest. Layout before:
 
+```
 lsblk | tee lsblk-before.txt
+
+```
 
 Partitioned the three disks with GPT, one RAID partition each:
 
