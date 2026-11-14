@@ -182,7 +182,7 @@ ping -c 4 <windows-ip-address>
 
 ```
 
-## 5. Baseline Snapshot Creation
+### 5. Baseline Snapshot Creation
 
 Create a clean recovery point before handing over the environment:
 
