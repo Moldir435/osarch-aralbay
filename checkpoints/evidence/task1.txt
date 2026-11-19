@@ -1,0 +1,7 @@
+Get-CimInstance Win32_Processor
+Select-Object NumberOfCores
+Get-CimInstance Win32_ComputerSystem
+Get-CimInstance Win32_OperatingSystem
+Get-PhysicalDisk
+Get-Disk
+Get-CimInstance Win32_OperatingSystem
