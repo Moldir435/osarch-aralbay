@@ -1,0 +1,8 @@
+### Task 2 - Plan and justify
+
+| Part | What goes in it |
+|---|---|
+| **Allocation** | **Ubuntu Server:** 1 vCPU, 1 GB RAM, 20 GB Disk (Dynamically allocated). Network: Adapter 1 set to NAT, Adapter 2 set to Host-Only.<br><br>**Windows 11:** 2 vCPUs, 4 GB RAM, 64 GB Disk (Dynamically allocated). Network: Adapter 1 set to NAT. |
+| **Arithmetic** | **Task 1 Host figures:** 8 Cores, 16 GB RAM, 256 GB Free Disk.<br><br>**Total Guest allocation:** 3 vCPUs, 5 GB RAM, up to 84 GB Disk.<br><br>**Left for Host:** 5 Cores, 11 GB RAM, 172 GB Disk.<br><br>**Assumption:** The host OS itself needs at least 2 Cores and 4 GB RAM to stay usable. Since 5 Cores and 11 GB RAM remain, the host will continue to run smoothly alongside both running guests. |
+| **Justification** | **Network:** For Ubuntu, using NAT (for internet) + Host-Only (for SSH) is much safer and more reliable than a Bridged adapter. It guarantees host-to-guest SSH connectivity regardless of the physical network's DHCP or firewall rules.<br><br>**Resources:** Windows 11 strictly requires at least 4 GB RAM and 2 vCPUs by default. Ubuntu Server (no GUI) is lightweight and can easily run on 1 GB RAM and 1 vCPU. Dynamically allocated disks are chosen so they don't instantly consume 84 GB of the host's physical storage, keeping the host completely usable. |
+| **Verification plan** | **Ubuntu Resources:** On Ubuntu, run `free -h` (expect ~1GB total) and `nproc` (expect 1).<br>**Windows Resources:** Open Task Manager -> Performance tab (expect 4GB RAM, 2 Virtual Processors).<br>**SSH connectivity:** On the host, run `ssh user@<ubuntu_host_only_ip>`. Expect a successful login prompt.<br>**Internet access:** On the Ubuntu guest, run `ping -c 4 8.8.8.8`. Expect 4 packets received, 0% packet loss. |
